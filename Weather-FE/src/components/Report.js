@@ -22,7 +22,7 @@ const Report = () => {
     const fetchReports = async () => {
       try {
         const response = await API.get('/reports');
-        setReports(response.data);
+        setReports(response.data);  // reports will now contain the parsed weather_info
       } catch (err) {
         alert('Error fetching report');
       } finally {
@@ -31,6 +31,7 @@ const Report = () => {
     };
     fetchReports();
   }, []);
+  console.log(reports, "report details");
 
   // Logout function
   const handleLogout = () => {
@@ -87,10 +88,19 @@ const Report = () => {
                       primary={<Typography variant="h6">{`${report.username} searched for ${report.city}`}</Typography>}
                       secondary={
                         <Typography variant="body2">
-                          Temperature: {report.temperature}°C, Condition: {report.condition}
+                          Temperature: {report.weather_info?.current?.temperature}°C, Condition: {report.weather_info?.current?.weather_descriptions[0]},
+                          Humidity: {report.weather_info?.current?.humidity}%
                         </Typography>
                       }
                     />
+                    {/* Displaying the weather icon */}
+                    <Box sx={{ display: 'flex', justifyContent: 'center', mt: 2 }}>
+                      <img
+                        src={report.weather_info?.current?.weather_icons[0]}
+                        alt="weather-icon"
+                        style={{ width: '50px', height: '50px' }}
+                      />
+                    </Box>
                   </ListItem>
                 ))
               )}

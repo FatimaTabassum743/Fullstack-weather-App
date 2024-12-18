@@ -40,7 +40,10 @@ const Login = () => {
     e.preventDefault();
     try {
       const res = await API.post('/auth/login', formData);
+
       localStorage.setItem('token', res.data.token);
+      // localStorage.setItem('user details ', res.data);
+      console.log(res.data,"details")
       navigate('/weather');
     } catch (err) {
       alert('Login failed. Invalid credentials.');
