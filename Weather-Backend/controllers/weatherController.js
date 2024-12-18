@@ -7,7 +7,7 @@ exports.searchWeather = async (req, res) => {
 
   try {
     const weatherResponse = await axios.get(
-      `http://api.weatherstack.com/current?access_key=${process.env.WEATHER_API_KEY}&query=${city}`
+      `http://api.weatherstack.com/current?access_key=613dc53cf06f24ca0c45f5802c257cfb&query=${city}`
     );
 
     const weatherInfo = weatherResponse.data;
