@@ -1,0 +1,13 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* App.css */
+body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .bg-blue-50 {
+    background-color: white;
+  }
+  
